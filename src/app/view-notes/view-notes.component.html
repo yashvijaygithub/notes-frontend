@@ -1,0 +1,144 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+<div class="well well-sm" style="text-align: center"> <h3> Notes </h3> 
+<div class="alert alert-danger" [hidden]="noErrors" style="position: absolute;
+    padding: 3px;">
+ <a href="#" (click)="hideError()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+ <strong>{{errorMsg}}</strong>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="jumbotron" id="user_jumbotron">
+   <div class="row">
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-2" id="username">
+  <label> Username :</label>
+  </div>
+  <div class="col-sm-3"> 
+     <input class="form-control custom-control" placeholder="Username" [(ngModel)]="user"/>
+  </div>
+  <div>
+   <div class="col-sm-1"><button [disabled]="disableClicks" class="btn btn-default" data-toggle="modal" data-target="#addUserModal" (click)="addUser(user)"> ADD USER </button> </div>
+
+   </div>
+ </div>
+</div>
+</div>
+
+<div class="container">
+<div class="well well-lg">
+  
+  
+  <div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-8"> 
+     <textarea class="form-control custom-control" style="resize:vertical;height:auto" placeholder="Add notes here" [(ngModel)]="addNote"></textarea>
+  </div>
+  <div class="add_button_layout">
+   <div class="col-md-1"> <button [disabled]="disableClicks" class="btn btn-default" data-toggle="modal" data-target="#addNotesModal" id="add_button" (click)="addNotes(addNote,user)"> ADD NOTES </button> </div>
+   </div>
+ </div>
+
+ </div>
+ </div>
+
+
+ <div class="container">
+ <div class="jumbotron" style="padding-top: 25px;padding-bottom: 20px">
+ 
+<div *ngFor="let note of notes">
+ <div class="well well-sm">
+	<div class="row">
+  	 <div class="col-md-1">
+  </div>
+
+  <div class="col-md-8"> 
+  <div class="row">
+    <div class="col-lg-8"> 
+  <span> {{note.userName }} </span>
+  </div>
+   <div class="col-lg-4"> 
+  <span> {{note.createdDate | dateFormatPipe}} </span>
+  </div>
+  </div>
+     <textarea class="form-control custom-control" style="resize:vertical" [(ngModel)]="note.text"></textarea>
+  </div>
+  
+   <div class="col-md-1"><button [disabled]="disableClicks" class="btn btn-info" data-toggle="modal" data-target="#editNotesModal" (click)="editNotes('edit')"> EDIT </button> </div>
+   <div class="col-md-1"><button [disabled]="disableClicks" class="btn btn-danger" data-toggle="modal" data-target="#deleteNotesModal" (click)="deleteNotes(note.id)"> DELETE </button> </div>
+ 	</div>
+ </div>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="addUserModal" role="dialog">
+ <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add notes</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{messageToDisplayInModal}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>	
+
+
+<div class="modal fade" id="deleteNotesModal" role="dialog">
+ <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Delete notes</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{messageToDisplayInModal}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>
+
+<div class="modal fade" id="editNotesModal" role="dialog">
+ <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit notes</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{messageToDisplayInModal}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div></div>
+<!-- <div>
+<add-notes></add-notes>
+</div>
+
+
+<div>
+<delete-notes></delete-notes>
+</div>
+
+<div>
+<update-notes></update-notes>
+</div>
+ -->
+

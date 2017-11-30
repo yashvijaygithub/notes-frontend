@@ -1,0 +1,22 @@
+#username{
+	text-align: right;
+    padding-top: 7px;
+    padding-right: 5px;
+}
+
+#user_jumbotron{
+     padding-top: 8px;
+     padding-bottom: 8px;
+}
+
+.add_button_layout{
+	 padding-top: 7px;
+	 text-align: center;
+	 font-weight: bold;
+}
+
+#add_button{
+	 border-color: green;
+	 text-align: center;
+	 font-weight: bolder;
+}
